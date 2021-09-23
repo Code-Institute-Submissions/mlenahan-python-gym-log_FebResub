@@ -26,14 +26,7 @@ class TestMovement(unittest.TestCase):
     def test_initialization_override_difficulty_invalid(self):
         with self.assertRaises(ValueError):
             Movement('Squat', difficulty='invalid')
-            
-            
-        
 
-
-    # def test_split(self):
-    #     s = 'hello world'
-    #     self.assertEqual(s.split(), ['hello', 'world'])
-    #     # check that s.split fails when the separator is not a string
-    #     with self.assertRaises(TypeError):
-    #         s.split(2)
+# TODO
+# Add tests for created_at
+# Add test for generate_id          
