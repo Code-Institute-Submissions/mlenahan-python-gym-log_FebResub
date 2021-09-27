@@ -14,7 +14,6 @@ class TestMovement(unittest.TestCase):
         self.assertEqual(movement.notes, '')
         self.assertEqual(movement.difficulty, None)
 
-
     def test_initialization_override_default(self):
         movement = Movement('Squat', weighted=False)
         self.assertEqual(movement.weighted, False)
@@ -26,6 +25,10 @@ class TestMovement(unittest.TestCase):
     def test_initialization_override_difficulty_invalid(self):
         with self.assertRaises(ValueError):
             Movement('Squat', difficulty='invalid')
+
+    def test_created_at(self):
+        movement = Movement('Squat', created_at=datetime.now())
+        self.assertEqual(movement.created_at, datetime.now())        
 
 # TODO
 # Add tests for created_at
