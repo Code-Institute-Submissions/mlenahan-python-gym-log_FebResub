@@ -1,6 +1,9 @@
 import unittest
+from datetime import datetime
+from freezegun import freeze_time
 
-from core.models.movement import Movement
+from gym_log.core.models.movement import Movement
+
 
 class TestMovement(unittest.TestCase):
 
@@ -26,9 +29,10 @@ class TestMovement(unittest.TestCase):
         with self.assertRaises(ValueError):
             Movement('Squat', difficulty='invalid')
 
+    @freeze_time("2021-09-28")
     def test_created_at(self):
         movement = Movement('Squat', created_at=datetime.now())
-        self.assertEqual(movement.created_at, datetime.now())        
+        self.assertEqual(movement.created_at, "2021-09-28")
 
 # TODO
 # Add tests for created_at

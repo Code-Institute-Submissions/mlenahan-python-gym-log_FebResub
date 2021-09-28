@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Workout:
 
     @classmethod
@@ -13,4 +14,3 @@ class Workout:
         self.finished_at = datetime.time()
         self.tags = tags
         self.notes = notes
-        

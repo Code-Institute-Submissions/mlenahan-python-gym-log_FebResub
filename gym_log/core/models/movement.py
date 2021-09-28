@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Movement:
 
     DIFFICULTY = ('beginner', 'intermediate', 'advanced')
@@ -8,7 +9,7 @@ class Movement:
     def generate_id(cls):
         return 'abc'
 
-    def __init__(self, name, weighted=True, tags=[], description='', notes='', difficulty=None):
+    def __init__(self, name, weighted=True, tags=[], created_at, description='', notes='', difficulty=None):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
             raise ValueError("%s is not a valid difficulty." % difficulty)
         self.id = self.generate_id()
