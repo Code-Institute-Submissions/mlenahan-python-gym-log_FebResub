@@ -29,11 +29,10 @@ class TestMovement(unittest.TestCase):
         with self.assertRaises(ValueError):
             Movement('Squat', difficulty='invalid')
 
-    @freeze_time("2021-09-28")
+    @freeze_time("2021-09-29")
     def test_created_at(self):
         movement = Movement('Squat', created_at=datetime.now())
-        # self.assertEqual(movement.created_at, datetime(2021-09-28))
-        self.assertEqual(movement.created_at, (2021, 9, 28))
+        self.assertEqual(movement.created_at, (2021, 9, 29, 0, 0))
 
     def test_generate_id(self):
         movement = Movement('Squat')
