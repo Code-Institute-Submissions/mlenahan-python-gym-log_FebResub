@@ -17,5 +17,5 @@ class Set(Movement, Workout):
         self.rep_count = rep_count
         self.rpe = rpe
         self.notes = notes
-        Movement.id = id
-        Workout.id = id
+        Movement.id = movement_id
+        Workout.id = workout_id

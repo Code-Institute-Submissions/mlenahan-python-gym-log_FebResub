@@ -1,18 +1,25 @@
 from datetime import datetime
-import uuid
+import itertools
 
 
 class Movement:
 
     DIFFICULTY = ('beginner', 'intermediate', 'advanced')
 
+
+    # Possible ID generating functions
     # @classmethod
     # def generate_id(cls):
     #     return uuid.uuid4()
 
+    # @classmethod
+    # def generate_id(cls):
+    #     id_iter = itertools.count()
+    #     return id_iter
+
     @classmethod
     def generate_id(cls):
-        return 'abc'
+        return abc
 
     def __init__(self, name, created_at=datetime.now(), description='', notes='', difficulty=None, weighted=True, tags=[]):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
