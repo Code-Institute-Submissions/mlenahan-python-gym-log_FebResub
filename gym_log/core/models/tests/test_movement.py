@@ -41,6 +41,11 @@ class TestMovement(unittest.TestCase):
         movement = Movement('Squat', notes='good form is essential')
         self.assertEqual(movement.notes, 'good form is essential')
 
+    @freeze_time("2020-04-26")
+    def test_get_today_date(self):
+        movement = Movement('Squat', created_at=datetime.now())
+        assert movement.created_at == datetime.now()
+
     # @freeze_time("2021-09-29")
     # def test_created_at(self):
     #     movement = Movement('Squat', created_at=datetime.now())

@@ -16,12 +16,12 @@ class TestWorkout(unittest.TestCase):
         self.assertEqual(workout.tags, [])
         self.assertEqual(workout.notes, '')
 
-    def test_initialization_override_started_at(self):
-        workout = Workout('Push Day 1', started_at=datetime.time(13, 30, 45, 0))
-        self.assertEqual(workout.started_at, (13, 30, 45, 0))
+    # def test_initialization_override_started_at(self):
+    #     workout = Workout('Push Day 1', started_at=datetime.time(14, 30, 00))
+    #     self.assertEqual(workout.started_at, (14, 30, 00))
 
-    # def test_initialization_override_difficulty(self):
-    #     movement = Movement('Squat', difficulty='beginner')
+    # def test_initialization_override_finished_at(self):
+    #     workout = Workout('Push Day 1', started_at=)
     #     self.assertEqual(movement.difficulty, 'beginner')
 
     # def test_initialization_override_difficulty_invalid(self):

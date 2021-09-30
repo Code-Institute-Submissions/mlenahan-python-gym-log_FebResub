@@ -1,5 +1,6 @@
 from datetime import datetime
-import itertools
+import itertools 
+import uuid
 
 
 class Movement:
@@ -19,7 +20,7 @@ class Movement:
 
     @classmethod
     def generate_id(cls):
-        return abc
+        return 'abc'
 
     def __init__(self, name, created_at=datetime.now(), description='', notes='', difficulty=None, weighted=True, tags=[]):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
