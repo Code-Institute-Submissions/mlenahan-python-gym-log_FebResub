@@ -25,7 +25,7 @@ class Movement:
     def __init__(self, name, created_at=datetime.now(), description='', notes='', difficulty=None, weighted=True, tags=[]):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
             raise ValueError("%s is not a valid difficulty." % difficulty)
-        self.id = self.generate_id()
+        self.movement_id = self.generate_id()
         self.name = name
         self.weighted = weighted
         self.tags = tags

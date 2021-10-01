@@ -10,12 +10,12 @@ class Set(Movement, Workout):
     def generate_id(cls):
         return 'abc'
 
-    def __init__(self, rep_count, rpe=None, notes=''):
+    def __init__(self, rep_count, movement_id, workout_id, rpe=None, notes=''):
         if rpe is not None and rpe not in self.RPE:
             raise ValueError("%s is not a valid rpe." % rpe)
         self.id = self.generate_id()
         self.rep_count = rep_count
         self.rpe = rpe
         self.notes = notes
-        Movement.id = id
-        Workout.id = id
+        self.workout_id = workout_id
+        self.movement_id = movement_id
