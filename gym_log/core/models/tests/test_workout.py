@@ -15,27 +15,27 @@ class TestWorkout(unittest.TestCase):
         self.assertEqual(workout.finished_at, None)
         self.assertEqual(workout.tags, [])
         self.assertEqual(workout.notes, '')
+        self.assertEqual(workout.description, '')
 
     # def test_initialization_override_started_at(self):
     #     workout = Workout('Push Day 1', started_at=datetime.time(14, 30, 00))
     #     self.assertEqual(workout.started_at, (14, 30, 00))
 
-    # def test_initialization_override_finished_at(self):
-    #     workout = Workout('Push Day 1', started_at=)
-    #     self.assertEqual(movement.difficulty, 'beginner')
+    def test_initialization_override_tags(self):
+        workout = Workout('Push Day 1', tags=['Bench Press', 'Military press'])
+        self.assertEqual(workout.tags, ['Bench Press', 'Military Press'])
 
-    # def test_initialization_override_difficulty_invalid(self):
-    #     with self.assertRaises(ValueError):
-    #         Movement('Squat', difficulty='invalid')
+    def test_initialization_override_description(self):
+        workout = Workout('Push Day 1', description='wokout focusing on chest, shoulders and triceps')
+        self.assertEqual(workout.description, 'compound barbell exercise for legs')
 
-    # @freeze_time("2021-09-29")
-    # def test_created_at(self):
-    #     movement = Movement('Squat', created_at=datetime.now())
-    #     self.assertEqual(movement.created_at, (2021, 9, 29, 0, 0))
+    def test_initialization_override_notes(self):
+        workout = Workout('Push Day 1', notes='day 1 is chest focused')
+        self.assertEqual(workout.notes, 'good form is essential')
 
-    # def test_generate_id(self):
-    #     workout = Movement('Push Day 1')
-    #     self.assertEqual(movement.id, 'abc')
+    def test_generate_id(self):
+        workout = Workout('Push Day 1')
+        self.assertEqual(workout.id, 'abc')
 # TODO
 # Add tests for created_at
 # Add test for generate_id          
