@@ -9,7 +9,7 @@ class TestWorkout(unittest.TestCase):
 
     def test_initialization_name_only(self):
         workout = Workout('Push Day 1')
-        self.assertEqual(workout.id, 'abc')
+        self.assertEqual(workout.workout_id, 'abc')
         self.assertEqual(workout.name, 'Push Day 1')
         self.assertEqual(workout.started_at, None)
         self.assertEqual(workout.finished_at, None)
@@ -35,7 +35,7 @@ class TestWorkout(unittest.TestCase):
 
     def test_generate_id(self):
         workout = Workout('Push Day 1')
-        self.assertEqual(workout.id, 'abc')
+        self.assertEqual(workout.workout_id, 'abc')
 # TODO
 # Add tests for created_at
 # Add test for generate_id          

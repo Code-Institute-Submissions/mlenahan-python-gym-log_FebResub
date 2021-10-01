@@ -18,6 +18,7 @@ class Movement:
     #     id_iter = itertools.count()
     #     return id_iter
 
+
     @classmethod
     def generate_id(cls):
         return 'abc'
