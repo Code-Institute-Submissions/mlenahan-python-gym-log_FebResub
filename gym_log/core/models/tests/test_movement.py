@@ -43,14 +43,9 @@ class TestMovement(unittest.TestCase):
 
     @freeze_time("2020-04-26")
     def test_get_today_date(self):
-        movement = Movement('Squat', created_at=datetime.now())
-        assert movement.created_at == datetime.now()
-
-    # @freeze_time("2021-09-29")
-    # def test_created_at(self):
-    #     movement = Movement('Squat', created_at=datetime.now())
-    #     self.assertEqual(movement.created_at, (2021, 9, 29, 0, 0))
-
+        movement = Movement('Squat')
+        self.assertEqual(str(movement.created_at), "2020-04-26 00:00:00")
+    
     def test_generate_id(self):
         movement = Movement('Squat')
         self.assertEqual(movement.movement_id, 'abc')

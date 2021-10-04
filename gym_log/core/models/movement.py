@@ -18,12 +18,12 @@ class Movement:
     #     id_iter = itertools.count()
     #     return id_iter
 
-
+    
     @classmethod
     def generate_id(cls):
         return 'abc'
 
-    def __init__(self, name, created_at=datetime.now(), description='', notes='', difficulty=None, weighted=True, tags=[]):
+    def __init__(self, name, description='', notes='', difficulty=None, weighted=True, tags=[]):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
             raise ValueError("%s is not a valid difficulty." % difficulty)
         self.movement_id = self.generate_id()
@@ -32,5 +32,5 @@ class Movement:
         self.tags = tags
         self.description = description
         self.notes = notes
-        self.created_at = created_at
+        self.created_at = datetime.now()
         self.difficulty = difficulty

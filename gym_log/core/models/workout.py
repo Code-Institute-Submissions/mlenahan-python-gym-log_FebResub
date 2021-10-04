@@ -10,8 +10,8 @@ class Workout:
     def __init__(self, name, started_at=None, finished_at=None, tags=[], notes='', description=''):
         self.workout_id = self.generate_id()
         self.name = name
-        self.started_at = datetime.time()
-        self.finished_at = datetime.time()
+        self.started_at = started_at
+        self.finished_at = finished_at
         self.tags = tags
         self.notes = notes
         self.description = description

@@ -22,16 +22,16 @@ class TestWorkout(unittest.TestCase):
     #     self.assertEqual(workout.started_at, (14, 30, 00))
 
     def test_initialization_override_tags(self):
-        workout = Workout('Push Day 1', tags=['Bench Press', 'Military press'])
+        workout = Workout('Push Day 1', tags=['Bench Press', 'Military Press'])
         self.assertEqual(workout.tags, ['Bench Press', 'Military Press'])
 
     def test_initialization_override_description(self):
         workout = Workout('Push Day 1', description='wokout focusing on chest, shoulders and triceps')
-        self.assertEqual(workout.description, 'compound barbell exercise for legs')
+        self.assertEqual(workout.description, 'wokout focusing on chest, shoulders and triceps')
 
     def test_initialization_override_notes(self):
         workout = Workout('Push Day 1', notes='day 1 is chest focused')
-        self.assertEqual(workout.notes, 'good form is essential')
+        self.assertEqual(workout.notes, 'day 1 is chest focused')
 
     def test_generate_id(self):
         workout = Workout('Push Day 1')
