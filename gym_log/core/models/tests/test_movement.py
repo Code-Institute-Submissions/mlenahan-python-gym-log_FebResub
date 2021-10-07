@@ -1,5 +1,4 @@
 import unittest
-from datetime import datetime
 from freezegun import freeze_time
 
 from gym_log.core.models.movement import Movement
@@ -45,10 +44,7 @@ class TestMovement(unittest.TestCase):
     def test_get_today_date(self):
         movement = Movement('Squat')
         self.assertEqual(str(movement.created_at), "2020-04-26 00:00:00")
-    
+
     def test_generate_id(self):
         movement = Movement('Squat')
         self.assertEqual(movement.movement_id, 'abc')
-# TODO
-# Add tests for created_at
-# Add test for generate_id          
