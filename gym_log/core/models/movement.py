@@ -7,6 +7,8 @@ class Movement:
 
     DIFFICULTY = ('beginner', 'intermediate', 'advanced')
 
+    FIELDS = ('id', 'name', 'description', 'notes', 'tags', 'weighted', 'created_at', 'difficulty')
+
 
     # Possible ID generating functions
     # @classmethod
@@ -26,7 +28,7 @@ class Movement:
     def __init__(self, name, description='', notes='', difficulty=None, weighted=True, tags=[]):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
             raise ValueError("%s is not a valid difficulty." % difficulty)
-        self.movement_id = self.generate_id()
+        self.id = self.generate_id()
         self.name = name
         self.weighted = weighted
         self.tags = tags

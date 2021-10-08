@@ -8,7 +8,7 @@ class TestMovement(unittest.TestCase):
 
     def test_initialization_name_only(self):
         movement = Movement('Squat')
-        self.assertEqual(movement.movement_id, 'abc')
+        self.assertEqual(movement.id, 'abc')
         self.assertEqual(movement.name, 'Squat')
         self.assertEqual(movement.weighted, True)
         self.assertEqual(movement.tags, [])
@@ -47,4 +47,4 @@ class TestMovement(unittest.TestCase):
 
     def test_generate_id(self):
         movement = Movement('Squat')
-        self.assertEqual(movement.movement_id, 'abc')
+        self.assertEqual(movement.id, 'abc')

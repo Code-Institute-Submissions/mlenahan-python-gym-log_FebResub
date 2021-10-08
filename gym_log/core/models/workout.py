@@ -15,3 +15,7 @@ class Workout:
         self.tags = tags
         self.notes = notes
         self.description = description
+
+#TODO
+
+# change workout_id to id
