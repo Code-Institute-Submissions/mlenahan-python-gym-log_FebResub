@@ -34,4 +34,19 @@ class TestFileStorage(unittest.TestCase):
         movement = Movement('Deadlift')
         file_storage = FileStorage()
         file_storage.save(movement)
-        
+
+    # def test_save_multiple_classes(self):
+    #     movement = Movement('Deadlift')
+    #     workout = Workout('Push Day 2')
+    #     file_storage = FileStorage()
+    #     file_storage.save(movement)
+    #     file_storage.save(workout)
+
+    def test_save_multiple_movements(self):
+        movement_1 = Movement('Deadlift', id='d123')
+        movement_2 = Movement('Squat', id='s123')
+        file_storage = FileStorage()
+        file_storage.save(movement_1)
+        file_storage.save(movement_2)
+        movement_1.name = 'RDL'
+        file_storage.save(movement_1)

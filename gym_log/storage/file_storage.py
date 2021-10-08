@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+
 class FileStorage:
 
     path = 'gym_log/core/data/'
@@ -10,8 +11,7 @@ class FileStorage:
         entity_path = self.get_entity_path(entity)
         # check if the file exists
         with open(entity_path) as json_file:
-            data = json.load(json_file)
-            print(data)
+            file_dict = json.load(json_file)
 
         # if the file doesn't exist throw error
         # load JSON file contents as python dictionary
@@ -20,10 +20,13 @@ class FileStorage:
         for field in entity.FIELDS:
             value = getattr(entity, field)
             entity_dict[field] = value
-        print(entity_dict)
             
-        # add representation to file dict using id as key
+        # add entity_dict to file dict using id as key
+        file_dict[entity.id] = entity_dict
         # convert file dict back to JSON
+        with open(entity_path, 'w') as json_file:
+            # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
+            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
         # save JSON to file
         pass
 
@@ -31,3 +34,26 @@ class FileStorage:
         class_name = entity.__class__.__name__.lower()
         path = Path(__file__).parent / "data" / class_name  # ./data/movement.json
         return str(path) + '.json'
+
+    def load_file(self, path):
+        # use to replace lines 12, 13
+        # returns file_dict
+        pass
+
+    def convert_entity_to_dict(self, entity):
+        # use to replace 18, 21
+        # returns entity_dict
+        pass
+
+    def add_entry_to_file_dict(self, file_dict, entry):
+        # use to replace line 24
+        # returns file_dict
+        # entry is entity_dict
+        pass
+
+    def write_file_dict(self, file_dict, path):
+        # use to replace line 23 to 28
+        pass
+
+    def delete(self, entity):
+        pass

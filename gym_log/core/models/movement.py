@@ -25,10 +25,10 @@ class Movement:
     def generate_id(cls):
         return 'abc'
 
-    def __init__(self, name, description='', notes='', difficulty=None, weighted=True, tags=[]):
+    def __init__(self, name, description='', notes='', difficulty=None, weighted=True, tags=[], id=None):
         if difficulty is not None and difficulty not in self.DIFFICULTY:
             raise ValueError("%s is not a valid difficulty." % difficulty)
-        self.id = self.generate_id()
+        self.id = id if id else self.generate_id()
         self.name = name
         self.weighted = weighted
         self.tags = tags

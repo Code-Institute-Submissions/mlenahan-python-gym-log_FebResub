@@ -1,1 +1,32 @@
-{}
+{
+    "abc": {
+        "created_at": "2021-10-08 12:56:04.530542",
+        "description": "",
+        "difficulty": null,
+        "id": "abc",
+        "name": "Deadlift",
+        "notes": "",
+        "tags": [],
+        "weighted": true
+    },
+    "d123": {
+        "created_at": "2021-10-08 12:56:04.531013",
+        "description": "",
+        "difficulty": null,
+        "id": "d123",
+        "name": "RDL",
+        "notes": "",
+        "tags": [],
+        "weighted": true
+    },
+    "s123": {
+        "created_at": "2021-10-08 12:56:04.531016",
+        "description": "",
+        "difficulty": null,
+        "id": "s123",
+        "name": "Squat",
+        "notes": "",
+        "tags": [],
+        "weighted": true
+    }
+}
