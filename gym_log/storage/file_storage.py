@@ -35,25 +35,35 @@ class FileStorage:
         path = Path(__file__).parent / "data" / class_name  # ./data/movement.json
         return str(path) + '.json'
 
-    def load_file(self, path):
+    def load_file(self, entity_path):
         # use to replace lines 12, 13
         # returns file_dict
-        pass
+        with open(entity_path) as json_file:
+            file_dict = json.load(json_file)
+        return file_dict
 
     def convert_entity_to_dict(self, entity):
         # use to replace 18, 21
         # returns entity_dict
-        pass
+        entity_dict = {}
+        for field in entity.FIELDS:
+            value = getattr(entity, field)
+            entity_dict[field] = value
+        return entity_dict
 
     def add_entry_to_file_dict(self, file_dict, entry):
         # use to replace line 24
         # returns file_dict
         # entry is entity_dict
-        pass
+        file_dict[entity.id] = entity_dict
+        return file_dict
 
-    def write_file_dict(self, file_dict, path):
+    def write_file_dict(self, file_dict, entity_path):
         # use to replace line 23 to 28
-        pass
+        with open(entity_path, 'w') as json_file:
+            # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
+            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
+        
 
     def delete(self, entity):
         pass
