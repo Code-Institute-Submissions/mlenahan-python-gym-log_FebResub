@@ -22,6 +22,11 @@ parser.add_argument(
     type=str
 )
 
+parser.add_argument(
+    '--reps',
+    type=int
+)
+
 args = parser.parse_args()
 
 
@@ -46,6 +51,13 @@ def validate_workout_add():
         raise ValueError('Must include name when adding a workout.')
 
 
+def validate_set_add():
+    args = parser.parse_args()
+    args_dict = vars(args)
+    if args_dict['name'] and args_dict['reps'] is None:
+        raise ValueError('Must include workout name, exercise name and number of reps when adding a set.')
+
+
 if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
 
@@ -55,7 +67,8 @@ if args.resource == 'movement' and args.action == 'show':
 if args.resource == 'workout' and args.action == 'add':
     validate_workout_add()
 
-
+if args.resource == 'set' and args.action == 'add':
+    validate_set_add()
 # how to use - run.py movement add --name ... 
 
 # resource, action, value
