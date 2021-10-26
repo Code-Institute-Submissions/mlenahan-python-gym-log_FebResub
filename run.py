@@ -24,17 +24,39 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+
 def validate_movement_add():
     args = parser.parse_args()
     args_dict = vars(args)
     if args_dict['name'] is None:
         raise ValueError('Must include name when adding a movement.')
 
+
+def validate_movement_show():
+    args = parser.parse_args()
+    args_dict = vars(args)
+    if args_dict['action'] == 'show':
+        return args_dict['name']
+
+
+def validate_workout_add():
+    args = parser.parse_args()
+    args_dict = vars(args)
+    if args_dict['name'] is None:
+        raise ValueError('Must include name when adding a workout.')
+
+
 if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
 
+if args.resource == 'movement' and args.action == 'show':
+    validate_movement_show()
 
-# run.py movement add ... 
+if args.resource == 'workout' and args.action == 'add':
+    validate_workout_add()
+
+
+# how to use - run.py movement add --name ... 
 
 # resource, action, value
 # movement show needs either id or name. write function to handle show
