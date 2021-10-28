@@ -23,6 +23,16 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '--workoutid',
+    type=str
+)
+
+parser.add_argument(
+    '--movementid',
+    type=str
+)
+
+parser.add_argument(
     '--reps',
     type=int
 )
@@ -40,8 +50,8 @@ def validate_movement_add():
 def validate_movement_show():
     args = parser.parse_args()
     args_dict = vars(args)
-    if args_dict['action'] == 'show':
-        return args_dict['name']
+    if args_dict['name'] or args_dict['workoutid'] is None:
+        raise ValueError('Must include name or workout id when showing a movement.')
 
 
 def validate_workout_add():
@@ -51,11 +61,18 @@ def validate_workout_add():
         raise ValueError('Must include name when adding a workout.')
 
 
+def validate_workout_delete():
+    args = parser.parse_args()
+    args_dict = vars(args)
+    if args_dict['name'] and args_dict['workoutid'] is None:
+        raise ValueError('Must include name or workout id when deleting a workout.')
+
+
 def validate_set_add():
     args = parser.parse_args()
     args_dict = vars(args)
-    if args_dict['name'] and args_dict['reps'] is None:
-        raise ValueError('Must include workout name, exercise name and number of reps when adding a set.')
+    if args_dict['workoutid'] and args_dict['movementid'] and args_dict['reps'] is None:
+        raise ValueError('Must include workout id, movement id and reps when adding a set')
 
 
 if args.resource == 'movement' and args.action == 'add':
@@ -69,6 +86,9 @@ if args.resource == 'workout' and args.action == 'add':
 
 if args.resource == 'set' and args.action == 'add':
     validate_set_add()
+
+if args.resource == 'workout' and args.action == 'delete':
+    validate_workout_delete()
 # how to use - run.py movement add --name ... 
 
 # resource, action, value
