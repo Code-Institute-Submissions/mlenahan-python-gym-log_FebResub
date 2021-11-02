@@ -1,5 +1,6 @@
 import argparse
 from argparse import ArgumentError
+from gym_log.controllers import movement
 
 parser = argparse.ArgumentParser(
     description='Gym logging app'
@@ -51,7 +52,8 @@ def validate_movement_show():
     args = parser.parse_args()
     args_dict = vars(args)
     if args_dict['name'] or args_dict['workoutid'] is None:
-        raise ValueError('Must include name or workout id when showing a movement.')
+        raise ValueError(
+            'Must include name or workout id when showing a movement.')
 
 
 def validate_workout_add():
@@ -65,7 +67,8 @@ def validate_workout_delete():
     args = parser.parse_args()
     args_dict = vars(args)
     if args_dict['name'] and args_dict['workoutid'] is None:
-        raise ValueError('Must include name or workout id when deleting a workout.')
+        raise ValueError(
+            'Must include name or workout id when deleting a workout.')
 
 
 def validate_set_add():
@@ -77,6 +80,7 @@ def validate_set_add():
 
 if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
+    movement.add()
 
 if args.resource == 'movement' and args.action == 'show':
     validate_movement_show()
