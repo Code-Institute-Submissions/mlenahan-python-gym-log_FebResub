@@ -51,8 +51,8 @@ parser.add_argument(
 
 parser.add_argument(
     '--tags',
-    nargs='*',
-    default=[]
+    nargs='+',
+    help='Set tags'
 )
 
 parser.add_argument(
