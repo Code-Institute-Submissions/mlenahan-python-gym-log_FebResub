@@ -18,9 +18,41 @@ parser.add_argument(
     help='Type of interaction.'
 )
 
+# Movement arguments
+
 parser.add_argument(
     '--name',
     type=str
+)
+
+parser.add_argument(
+    '--description',
+    type=str,
+    default=''
+)
+
+parser.add_argument(
+    '--notes',
+    type=str,
+    default=''
+)
+
+parser.add_argument(
+    '--difficulty',
+    type=str,
+    default=None
+)
+
+parser.add_argument(
+    '--weighted',
+    type=str,
+    default=True
+)
+
+parser.add_argument(
+    '--tags',
+    nargs='*',
+    default=[]
 )
 
 parser.add_argument(
@@ -80,7 +112,7 @@ def validate_set_add():
 
 if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
-    movement.add()
+    movement.add(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
 
 if args.resource == 'movement' and args.action == 'show':
     validate_movement_show()

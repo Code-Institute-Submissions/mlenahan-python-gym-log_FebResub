@@ -1,9 +1,8 @@
 from ..core.models.movement import Movement
 from gym_log.storage.file_storage import FileStorage
-from run import args
 
 
-def add():
-    movement = Movement(args)
+def add(name, description='', notes='', difficulty=None, weighted=True, tags=[]):
+    movement = Movement(name, description, notes, difficulty, weighted)
     file_storage = FileStorage()
     file_storage.save(movement)
