@@ -6,3 +6,11 @@ def add(name, description='', notes='', difficulty=None, weighted=True, tags=[])
     movement = Movement(name, description, notes, difficulty, weighted, tags)
     file_storage = FileStorage()
     file_storage.save(movement)
+
+def retrieve(id):
+    file_storage = FileStorage()
+    result = file_storage.retrieve(Movement, id)
+    if not result:
+        raise ValueError('No movement with given ID')
+    return result
+    

@@ -30,10 +30,30 @@ class FileStorage:
         # save JSON to file
         pass
 
+    def retrieve(self, type, id):
+        # get string from type
+        type_string = type.__name__.lower()
+        # find the entity path
+        path = self.get_path(type_string)
+        # load json contents as python dictionary
+        data = self.load_file(path)
+        # look for entity with id
+        entity_data = data.get(id)
+        # if found, return dictionary representaion of entity
+        if not entity_data:
+            return None
+        return type.from_dict(entity_data)
+        
+    def delete(self, entity):
+        pass
+
+    def get_path(self, type):
+        path = Path(__file__).parent / "data" / type  # ./data/movement.json
+        return str(path) + '.json'
+
     def get_entity_path(self, entity):
         class_name = entity.__class__.__name__.lower()
-        path = Path(__file__).parent / "data" / class_name  # ./data/movement.json
-        return str(path) + '.json'
+        return self.get_path(class_name)
 
     def load_file(self, entity_path):
         # use to replace lines 12, 13

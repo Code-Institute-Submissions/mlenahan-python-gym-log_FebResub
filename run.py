@@ -26,6 +26,11 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '--id',
+    type=str
+)
+
+parser.add_argument(
     '--description',
     type=str,
     default=''
@@ -79,6 +84,11 @@ def validate_movement_add():
     if args_dict['name'] is None:
         raise ValueError('Must include name when adding a movement.')
 
+def validate_movement_retrieve():
+    args = parser.parse_args()
+    args_dict = vars(args)
+    if args_dict.get('id') is None:
+        raise ValueError('Must include id when retrieving a movement.')
 
 def validate_movement_show():
     args = parser.parse_args()
@@ -113,6 +123,11 @@ def validate_set_add():
 if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
     movement.add(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
+
+if args.resource == 'movement' and args.action == 'retrieve':
+    validate_movement_retrieve()
+    entity = movement.retrieve(args.id)
+    print(entity)
 
 if args.resource == 'movement' and args.action == 'show':
     validate_movement_show()

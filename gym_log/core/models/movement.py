@@ -20,6 +20,9 @@ class Movement:
     #     id_iter = itertools.count()
     #     return id_iter
 
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data['name'], data['description'], data['notes'], data['difficulty'], data['weighted'], data['tags'])
     
     @classmethod
     def generate_id(cls):
