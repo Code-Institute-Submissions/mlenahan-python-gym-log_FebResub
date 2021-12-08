@@ -1,1 +1,12 @@
-{}
+{
+    "abc": {
+        "created_at": "2021-12-08 20:53:23.919780",
+        "description": "",
+        "difficulty": null,
+        "id": "abc",
+        "name": "squat",
+        "notes": "",
+        "tags": null,
+        "weighted": true
+    }
+}

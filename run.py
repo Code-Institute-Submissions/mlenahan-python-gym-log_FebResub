@@ -33,6 +33,26 @@ parser_movement_delete = movement_subparsers.add_parser('delete', help='TODO')
 parser_movement_delete.set_defaults(func=movement_delete)
 parser_movement_delete.add_argument('id', type=str)
 
+# movement retrieve subparser
+
+def movement_retrieve(args):
+    entity = movement.retrieve(args.id)
+    print(entity)
+
+parser_movement_retrieve = movement_subparsers.add_parser('retrieve', help='TODO')
+parser_movement_retrieve.set_defaults(func=movement_retrieve)
+parser_movement_retrieve.add_argument('id', type=str)
+
+# movement list subparser
+
+def movement_list(args):
+    entities = movement.list()
+    print(entities)
+
+parser_movement_list = movement_subparsers.add_parser('list', help='TODO')
+parser_movement_list.set_defaults(func=movement_list)
+parser_movement_list.add_argument('movement', type=str)
+
 args = parser.parse_args()
 args.func(args)
 
