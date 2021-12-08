@@ -50,7 +50,7 @@ parser.add_argument(
 
 parser.add_argument(
     '--weighted',
-    type=str,
+    type=bool,
     default=True
 )
 
@@ -124,10 +124,20 @@ if args.resource == 'movement' and args.action == 'add':
     validate_movement_add()
     movement.add(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
 
+if args.resource == 'movement' and args.action == 'update':
+    movement.update(args.id, name=args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
+
+if args.resource == 'movement' and args.action == 'delete':
+    movement.delete(args.id)
+
 if args.resource == 'movement' and args.action == 'retrieve':
     validate_movement_retrieve()
     entity = movement.retrieve(args.id)
     print(entity)
+
+if args.resource == 'movement' and args.action == 'list':
+    entities = movement.list()
+    print(entities)
 
 if args.resource == 'movement' and args.action == 'show':
     validate_movement_show()

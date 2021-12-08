@@ -44,8 +44,34 @@ class FileStorage:
             return None
         return type.from_dict(entity_data)
         
+    # TODO refactor common functionality with save
     def delete(self, entity):
-        pass
+        
+        entity_path = self.get_entity_path(entity)
+        with open(entity_path) as json_file:
+            file_dict = json.load(json_file)
+        del file_dict[entity.id]
+        print(file_dict)
+        with open(entity_path, 'w') as json_file:
+            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
+
+    def list(self, type):
+        type_string = type.__name__.lower()
+        # find the entity path
+        path = self.get_path(type_string)
+        # load json contents as python dictionary
+        data = self.load_file(path)
+        entities_data = data.values()
+        # create empty list
+        entity_list = []
+        # for every entity in entities_data
+        for entity in entities_data:
+        # get from_dict value 
+            entity_type = type.from_dict(entity)
+        # add to list
+            entity_list.append(entity_type)
+        return entity_list
+        # return
 
     def get_path(self, type):
         path = Path(__file__).parent / "data" / type  # ./data/movement.json
@@ -83,7 +109,3 @@ class FileStorage:
         with open(entity_path, 'w') as json_file:
             # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
             json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
-        
-
-    def delete(self, entity):
-        pass
