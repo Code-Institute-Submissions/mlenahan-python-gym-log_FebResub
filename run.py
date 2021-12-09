@@ -1,6 +1,6 @@
 import argparse
 from argparse import ArgumentError
-from gym_log.controllers import movement, workout
+from gym_log.controllers import movement, workout, set
 from tabulate import tabulate
 
 # main parser
@@ -115,165 +115,58 @@ def workout_list(args):
 parser_workout_list = workout_subparsers.add_parser('list', help='TODO')
 parser_workout_list.set_defaults(func=workout_list)
 
+# set subparser
+parser_set = subparsers.add_parser('set', help='TODO')
+set_subparsers = parser_set.add_subparsers()
+
+# set create subparser
+def set_create(args):
+    set.add(args.movement_id, args.workout_id, args.rep_count, rpe=args.rpe, notes=args.notes)
+
+parser_set_create = set_subparsers.add_parser('create', help='TODO')
+parser_set_create.set_defaults(func=set_create)
+parser_set_create.add_argument('movement_id', type=str)
+parser_set_create.add_argument('workout_id', type=str)
+parser_set_create.add_argument('rep_count', type=int)
+parser_set_create.add_argument('--notes', type=str, default='')
+parser_set_create.add_argument('--rpe', type=int)
+
+# set delete subparser
+def set_delete(args):
+    set.delete(args.id)
+
+parser_set_delete = set_subparsers.add_parser('delete', help='TODO')
+parser_set_delete.set_defaults(func=set_delete)
+parser_set_delete.add_argument('id', type=str)
+
+# set retrieve subparser
+
+def set_retrieve(args):
+    entity = set.retrieve(args.id)
+    headers = ['Movement', 'Workout', 'ID', 'Rep Count', 'RPE', 'Notes']
+    row = [entity.movement_id, entity.workout_id, entity.id, entity.rep_count, entity.rpe, entity.notes]
+    table = tabulate([row], headers=headers)
+    print(table)
+
+parser_set_retrieve = set_subparsers.add_parser('retrieve', help='TODO')
+parser_set_retrieve.set_defaults(func=set_retrieve)
+parser_set_retrieve.add_argument('id', type=str)
+
+# set list subparser
+
+def set_list(args):
+    entities = set.list()
+    headers = ['Movement', 'Workout', 'ID', 'Rep Count', 'RPE', 'Notes']
+    rows = []
+    for entity in entities:
+        row = [entity.movement_id, entity.workout_id, entity.id, entity.rep_count, entity.rpe, entity.notes]
+        rows.append(row)
+    table = tabulate(rows, headers=headers)
+    print(table)
+    
+
+parser_set_list = set_subparsers.add_parser('list', help='TODO')
+parser_set_list.set_defaults(func=set_list)
+
 args = parser.parse_args()
 args.func(args)
-
-# parser = argparse.ArgumentParser(
-#     description='Gym logging app'
-# )
-
-# parser.add_argument(
-#     'resource',
-#     type=str,
-#     help='The resource to interact with.'
-# )
-
-# parser.add_argument(
-#     'action',
-#     type=str,
-#     help='Type of interaction.'
-# )
-
-# # Movement arguments
-
-# parser.add_argument(
-#     '--name',
-#     type=str
-# )
-
-# parser.add_argument(
-#     '--id',
-#     type=str
-# )
-
-# parser.add_argument(
-#     '--description',
-#     type=str,
-#     default=''
-# )
-
-# parser.add_argument(
-#     '--notes',
-#     type=str,
-#     default=''
-# )
-
-# parser.add_argument(
-#     '--difficulty',
-#     type=str,
-#     default=None
-# )
-
-# parser.add_argument(
-#     '--weighted',
-#     type=bool,
-#     default=True
-# )
-
-# parser.add_argument(
-#     '--tags',
-#     nargs='+',
-#     help='Set tags'
-# )
-
-# parser.add_argument(
-#     '--workoutid',
-#     type=str
-# )
-
-# parser.add_argument(
-#     '--movementid',
-#     type=str
-# )
-
-# parser.add_argument(
-#     '--reps',
-#     type=int
-# )
-
-# args = parser.parse_args()
-
-
-# def validate_movement_add():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict['name'] is None:
-#         raise ValueError('Must include name when adding a movement.')
-
-# def validate_movement_retrieve():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict.get('id') is None:
-#         raise ValueError('Must include id when retrieving a movement.')
-
-# def validate_movement_show():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict['name'] or args_dict['workoutid'] is None:
-#         raise ValueError(
-#             'Must include name or workout id when showing a movement.')
-
-
-# def validate_workout_add():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict['name'] is None:
-#         raise ValueError('Must include name when adding a workout.')
-
-
-# def validate_workout_delete():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict['name'] and args_dict['workoutid'] is None:
-#         raise ValueError(
-#             'Must include name or workout id when deleting a workout.')
-
-
-# def validate_set_add():
-#     args = parser.parse_args()
-#     args_dict = vars(args)
-#     if args_dict['workoutid'] and args_dict['movementid'] and args_dict['reps'] is None:
-#         raise ValueError('Must include workout id, movement id and reps when adding a set')
-
-
-# if args.resource == 'movement' and args.action == 'add':
-#     validate_movement_add()
-#     movement.add(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
-
-# if args.resource == 'movement' and args.action == 'update':
-#     movement.update(args.id, name=args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
-
-# if args.resource == 'movement' and args.action == 'delete':
-#     movement.delete(args.id)
-
-# if args.resource == 'movement' and args.action == 'retrieve':
-#     validate_movement_retrieve()
-#     entity = movement.retrieve(args.id)
-#     print(entity)
-
-# if args.resource == 'movement' and args.action == 'list':
-#     entities = movement.list()
-#     print(entities)
-
-# if args.resource == 'movement' and args.action == 'show':
-#     validate_movement_show()
-
-# if args.resource == 'workout' and args.action == 'add':
-#     validate_workout_add()
-
-# if args.resource == 'set' and args.action == 'add':
-#     validate_set_add()
-
-# if args.resource == 'workout' and args.action == 'delete':
-#     validate_workout_delete()
-# # how to use - run.py movement add --name ... 
-
-# # resource, action, value
-# # movement show needs either id or name. write function to handle show
-
-# # to add workout - doesnt need name but
-# # workout - need id or name
-# # workout delete needs value or name - need a name or id to know what to delete
-
-# # cant add set without workout, exercise and number of reps
-# # 
