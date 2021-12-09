@@ -10,8 +10,11 @@ class FileStorage:
         # get the entity path
         entity_path = self.get_entity_path(entity)
         # check if the file exists
-        with open(entity_path) as json_file:
-            file_dict = json.load(json_file)
+        with open(entity_path, 'w+') as json_file:
+            try:
+                file_dict = json.load(json_file)
+            except json.decoder.JSONDecodeError:
+                file_dict = {}
 
         # if the file doesn't exist throw error
         # load JSON file contents as python dictionary
