@@ -1,1 +1,16 @@
-{}
+{
+    "0b99b8d3-8b48-48e0-9e7c-cc3069accb75": {
+        "description": "",
+        "id": "0b99b8d3-8b48-48e0-9e7c-cc3069accb75",
+        "name": "lunch",
+        "notes": "",
+        "tags": null
+    },
+    "c270e0ab-ccd2-46c8-bcb9-45c74a3c171f": {
+        "description": "",
+        "id": "c270e0ab-ccd2-46c8-bcb9-45c74a3c171f",
+        "name": "dinner",
+        "notes": "",
+        "tags": null
+    }
+}
