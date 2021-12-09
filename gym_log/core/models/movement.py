@@ -9,11 +9,9 @@ class Movement:
 
     FIELDS = ('id', 'name', 'description', 'notes', 'tags', 'weighted', 'created_at', 'difficulty')
 
-
-    # Possible ID generating functions
-    # @classmethod
-    # def generate_id(cls):
-    #     return uuid.uuid4()
+    @classmethod
+    def generate_id(cls):
+        return str(uuid.uuid4())
 
     # @classmethod
     # def generate_id(cls):
@@ -22,11 +20,7 @@ class Movement:
 
     @classmethod
     def from_dict(cls, data):
-        return cls(data['name'], data['description'], data['notes'], data['difficulty'], data['weighted'], data['tags'])
-    
-    @classmethod
-    def generate_id(cls):
-        return 'abc'
+        return cls(data['name'], data['description'], data['notes'], data['difficulty'], data['weighted'], data['tags'], data['id'])
 
     def __init__(self, name, description='', notes='', difficulty=None, weighted=True, tags=[], id=None):
         if difficulty is not None and difficulty not in self.DIFFICULTY:

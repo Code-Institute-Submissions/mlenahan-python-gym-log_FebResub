@@ -1,6 +1,7 @@
 import argparse
 from argparse import ArgumentError
 from gym_log.controllers import movement
+from tabulate import tabulate
 
 # main parser
 parser = argparse.ArgumentParser(description='Gym logging app')
@@ -37,7 +38,10 @@ parser_movement_delete.add_argument('id', type=str)
 
 def movement_retrieve(args):
     entity = movement.retrieve(args.id)
-    print(entity)
+    headers = ['Name', 'ID', 'Description', 'Difficulty', 'Notes', 'Tags', 'Weighted']
+    row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
+    table = tabulate([row], headers=headers)
+    print(table)
 
 parser_movement_retrieve = movement_subparsers.add_parser('retrieve', help='TODO')
 parser_movement_retrieve.set_defaults(func=movement_retrieve)
@@ -47,11 +51,17 @@ parser_movement_retrieve.add_argument('id', type=str)
 
 def movement_list(args):
     entities = movement.list()
-    print(entities)
+    headers = ['Name', 'ID', 'Description', 'Difficulty', 'Notes', 'Tags', 'Weighted']
+    rows = []
+    for entity in entities:
+        row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
+        rows.append(row)
+    table = tabulate(rows, headers=headers)
+    print(table)
+    
 
 parser_movement_list = movement_subparsers.add_parser('list', help='TODO')
 parser_movement_list.set_defaults(func=movement_list)
-parser_movement_list.add_argument('movement', type=str)
 
 args = parser.parse_args()
 args.func(args)

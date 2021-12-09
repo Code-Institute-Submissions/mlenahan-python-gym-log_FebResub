@@ -20,6 +20,7 @@ def delete(id):
     file_storage.delete(entity)
 
 def retrieve(id):
+    print(id)
     result = file_storage.retrieve(Movement, id)
     if not result:
         raise ValueError('No movement with given ID')
