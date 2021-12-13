@@ -1,5 +1,4 @@
 from datetime import datetime
-import itertools 
 import uuid
 
 
@@ -12,11 +11,6 @@ class Movement:
     @classmethod
     def generate_id(cls):
         return str(uuid.uuid4())
-
-    # @classmethod
-    # def generate_id(cls):
-    #     id_iter = itertools.count()
-    #     return id_iter
 
     @classmethod
     def from_dict(cls, data):
