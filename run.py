@@ -169,4 +169,10 @@ parser_set_list = set_subparsers.add_parser('list', help='TODO')
 parser_set_list.set_defaults(func=set_list)
 
 args = parser.parse_args()
-args.func(args)
+# args.func(args)
+
+try:
+    func = args.func
+except AttributeError:
+    parser.error("too few arguments")
+func(args)
