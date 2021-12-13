@@ -165,8 +165,25 @@ def set_list(args):
     print(table)
     
 
+# parser_set_list = set_subparsers.add_parser('list', help='TODO')
+# parser_set_list.set_defaults(func=set_list)
+
+# args = parser.parse_args()
+# args.func(args)
+
 parser_set_list = set_subparsers.add_parser('list', help='TODO')
 parser_set_list.set_defaults(func=set_list)
 
-args = parser.parse_args()
-args.func(args)
+while True:
+    user_input = input('$: ')
+    if not user_input:
+        continue
+    try:
+        args = parser.parse_args(user_input.split())
+        args.func(args)
+    except SystemExit:
+        continue
+    except AttributeError:
+        parser.print_help()
+    else:
+        break
