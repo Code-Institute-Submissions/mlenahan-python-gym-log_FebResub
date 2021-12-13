@@ -55,7 +55,7 @@ def movement_list(args):
     for entity in entities:
         row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
         rows.append(row)
-    table = tabulate(rows, headers=headers)
+    table = tabulate(rows, headers=headers, tablefmt="github")
     print(table)
     
 
