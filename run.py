@@ -49,13 +49,18 @@ parser_movement_retrieve.add_argument('id', type=str)
 # movement list subparser
 
 def movement_list(args):
-    entities = movement.list()
     headers = ['Name', 'ID', 'Description', 'Difficulty', 'Notes', 'Tags', 'Weighted']
+    try:
+        entities = movement.list()
+    except FileNotFoundError:
+        table = tabulate([], headers=headers)
+        print(table)
+        return
     rows = []
     for entity in entities:
         row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
         rows.append(row)
-    table = tabulate(rows, headers=headers, tablefmt="github")
+    table = tabulate(rows, headers=headers)
     print(table)
     
 
@@ -175,15 +180,16 @@ parser_set_list = set_subparsers.add_parser('list', help='TODO')
 parser_set_list.set_defaults(func=set_list)
 
 while True:
-    user_input = input('$: ')
-    if not user_input:
-        continue
     try:
-        args = parser.parse_args(user_input.split())
-        args.func(args)
-    except SystemExit:
-        continue
-    except AttributeError:
-        parser.print_help()
-    else:
+        user_input = input('$: ')
+        if not user_input:
+            continue
+        try:
+            args = parser.parse_args(user_input.split())
+            args.func(args)
+        except SystemExit:
+            continue
+        except AttributeError:
+            parser.print_help()
+    except KeyboardInterrupt:
         break

@@ -10,11 +10,14 @@ class FileStorage:
         # get the entity path
         entity_path = self.get_entity_path(entity)
         # check if the file exists
-        with open(entity_path, 'w+') as json_file:
-            try:
-                file_dict = json.load(json_file)
-            except json.decoder.JSONDecodeError:
-                file_dict = {}
+        try:
+            with open(entity_path) as json_file:
+                try:
+                    file_dict = json.load(json_file)
+                except json.decoder.JSONDecodeError:
+                    file_dict = {}
+        except FileNotFoundError:
+            file_dict = {}
 
         # if the file doesn't exist throw error
         # load JSON file contents as python dictionary
@@ -27,7 +30,7 @@ class FileStorage:
         # add entity_dict to file dict using id as key
         file_dict[entity.id] = entity_dict
         # convert file dict back to JSON
-        with open(entity_path, 'w') as json_file:
+        with open(entity_path, 'w+') as json_file:
             # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
             json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
         # save JSON to file

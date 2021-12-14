@@ -10,7 +10,7 @@ class Movement:
 
     @classmethod
     def generate_id(cls):
-        return str(uuid.uuid4())
+        return str(uuid.uuid4())[:8]
 
     @classmethod
     def from_dict(cls, data):
