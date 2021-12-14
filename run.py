@@ -13,7 +13,7 @@ movement_subparsers = parser_movement.add_subparsers()
 
 # movement create subparser
 def movement_create(args):
-    movement.add(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
+    movement.create(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
 
 parser_movement_create = movement_subparsers.add_parser('create', help='TODO')
 parser_movement_create.set_defaults(func=movement_create)
@@ -73,7 +73,7 @@ workout_subparsers = parser_workout.add_subparsers()
 
 # workout create subparser
 def workout_create(args):
-    workout.add(args.name, description=args.description, notes=args.notes, tags=args.tags)
+    workout.create(args.name, description=args.description, notes=args.notes, tags=args.tags)
 
 parser_workout_create = workout_subparsers.add_parser('create', help='TODO')
 parser_workout_create.set_defaults(func=workout_create)
@@ -126,7 +126,7 @@ set_subparsers = parser_set.add_subparsers()
 
 # set create subparser
 def set_create(args):
-    set.add(args.movement_id, args.workout_id, args.rep_count, rpe=args.rpe, notes=args.notes)
+    set.create(args.movement_id, args.workout_id, args.rep_count, rpe=args.rpe, notes=args.notes)
 
 parser_set_create = set_subparsers.add_parser('create', help='TODO')
 parser_set_create.set_defaults(func=set_create)

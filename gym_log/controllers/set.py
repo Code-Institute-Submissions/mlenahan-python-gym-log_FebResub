@@ -4,7 +4,7 @@ from . import movement, workout
 
 file_storage = FileStorage()
 
-def add(movement_id, workout_id, rep_count, rpe=None, notes=''):
+def create(movement_id, workout_id, rep_count, rpe=None, notes=''):
     movement.retrieve(movement_id)
     workout.retrieve(workout_id)
     set = Set(movement_id, workout_id, rep_count, rpe, notes)

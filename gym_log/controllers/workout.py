@@ -3,7 +3,7 @@ from gym_log.storage.file_storage import FileStorage
 
 file_storage = FileStorage()
 
-def add(name, description='', notes='', tags=[]):
+def create(name, description='', notes='', tags=[]):
     workout = Workout(name, description, notes, tags)
     file_storage.save(workout)
 
