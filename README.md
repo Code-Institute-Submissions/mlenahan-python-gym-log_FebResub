@@ -43,8 +43,41 @@ For example, If you wish to delete a movement, type ```movement delete 6af38638`
 
 If you would like to list a movement, workout or set, you must include the object you would like to list. The list action has no positional arguments.
 For example, If you wish to list a movement, type ```movement list```.
+
+![image](media/screenshots/movement-all-actions.png)
+
+## Features
+
+### Existing Features
+
+### Future Features
+
 ## Creating the Heroku app
 
+## Data Model
 
-## Constraints
+## Testing
 
+### Bugs
+
+- __Solved Bugs__
+
+### Remaining Bugs
+
+### Validator Testing
+
+## Deployment
+
+This project was deployed using Code Institute's mock terminal for Heroku.
+
+- Steps for deployment:
+    - Fork or clone this repository
+    - Create a new Heroku app
+    - Set the buildpacks to ```Python``` and ```NodeJS``` in that order
+    - Link the Heroku app to the repository 
+    - Select the correct branch and click Deploy Branch under the Manual deploy section
+
+
+## Credits
+
+- Code Institute for the deployment terminal
