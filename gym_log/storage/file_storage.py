@@ -57,7 +57,6 @@ class FileStorage:
         with open(entity_path) as json_file:
             file_dict = json.load(json_file)
         del file_dict[entity.id]
-        print(file_dict)
         with open(entity_path, 'w') as json_file:
             json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
 
