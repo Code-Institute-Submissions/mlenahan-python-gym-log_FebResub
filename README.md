@@ -1,31 +1,32 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Solaris Gym Tracker
 
-Welcome Michael Lenahan,
+Solaris Gym Tracker is Python terminal based gym tracker, which runs the Code Institute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+It was created using the argparse library.
 
-## Reminders
+Users have the ability to create, retrieve, list and delete movements, workouts and sets. These objects will be stored in a locally created storage system.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+[Here is a link to the live version of this project](https://python-gym-log-ml.herokuapp.com/)
+
+## How to use
+
+To run the app locally, type ```python3 run.py``` into the terminal. If using the live version, you do not need to carry out this step as the mock terminal will do it for you.
+
+Each action will have required arguments and optional arguments. 
+
+```create``` has a required argument of name. ```retrieve``` has a required argument of id. ```delete``` has a required argument of id ```list``` has no required arguments. 
+
+If you would like to create a movement, workout or set, you must include te object you would like to create and the required arguments that accompany that object.
+If you wish to create a movement, type ```movement create squat```. 
+
+If you would like to retrieve a movement, workout or set, you must include the object you would like to retrieve and the required arguments that accompany that object.
+If you wish to create a movement, type ```movement retrieve squat```. 
+
+
+
 
 ## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
 
 ## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
