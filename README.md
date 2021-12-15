@@ -6,6 +6,8 @@ CLI workout tracker. Users can record, list, and delete gym workout information.
 
 The project was created as a learning exercise to understand how to create a simple file storage system and MVC design.
 
+[Here is the live version of my project.](https://python-gym-log-ml.herokuapp.com/)
+
 ### Features
 
 * [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) app which allows users to create, read, update, and delete the related data models: Workout, Movement, and Set.
