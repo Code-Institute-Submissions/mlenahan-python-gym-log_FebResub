@@ -41,9 +41,15 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ![Example usage](media/screenshots/movement-all-actions.png)
 
-### Running the tests
+## Testing
 
-To run the unit tests: `python -m unittest .`
+To run the unit tests: `python3 -m unittest`
+
+I have also manually tested the project by doing the following:
+    
+- Passed the code through a PEP8 linter and confirmed there are no problems
+- Tested in my local terminal and the Code Institute Heroku terminal 
+
 
 ## Deployment
 
