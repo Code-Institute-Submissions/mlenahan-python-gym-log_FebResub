@@ -7,32 +7,26 @@ class FileStorage:
     path = 'gym_log/core/data/'
 
     def save(self, entity):
-        # get the entity path
+        
         entity_path = self.get_entity_path(entity)
-        # check if the file exists
+
         try:
             with open(entity_path) as json_file:
                 try:
                     file_dict = json.load(json_file)
                 except json.decoder.JSONDecodeError:
                     file_dict = {}
+                    
         except FileNotFoundError:
             file_dict = {}
-        # if the file doesn't exist throw error
-        # load JSON file contents as python dictionary
-        # create dictionary representaion of entity
         entity_dict = {}
         for field in entity.FIELDS:
             value = getattr(entity, field)
             entity_dict[field] = value
-        # add entity_dict to file dict using id as key
         file_dict[entity.id] = entity_dict
-        # convert file dict back to JSON
+        
         with open(entity_path, 'w+') as json_file:
-            # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
             json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
-        # save JSON to file
-        pass
 
     def retrieve(self, type, id):
         type_string = type.__name__.lower()
@@ -88,5 +82,4 @@ class FileStorage:
 
     def write_file_dict(self, file_dict, entity_path):
         with open(entity_path, 'w') as json_file:
-            # https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable
             json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
