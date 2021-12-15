@@ -1,83 +1,59 @@
-# Solaris Gym Tracker
+# CLI Workout tracker
 
-Solaris Gym Tracker is Python terminal based gym tracker, which runs the Code Institute mock terminal on Heroku.
+## Overview
 
-It was created using the argparse library.
+CLI workout tracker. Users can record, list, and delete gym workout information. A [live instance of the application](https://python-gym-log-ml.herokuapp.com/) is hosted using a mock on Heroku.
 
-Users have the ability to create, retrieve, list and delete movements, workouts and sets. These objects will be stored in a locally created storage system.
+The project was created as a learning exercise to understand how to create a simple file storage system and MVC design.
 
-[Here is a link to the live version of this project](https://python-gym-log-ml.herokuapp.com/)
+### Features
 
-![image](media/screenshots/am-i-responsive.png)
+* [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) app which allows users to create, read, update, and delete the related data models: Workout, Movement, and Set.
+* File storage backend - data is stored using a custom JSON file storage implementation.
+* Formatted data using [tabulate](https://pypi.org/project/tabulate/) library.
+* Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be comined in user commands, e.g. `movement delete abc-123`.
 
-## How to use
+### Design
 
-To run the app locally, type ```python3 run.py``` into the terminal. If using the live version, you do not need to carry out this step as the mock terminal will do it for you.
+This application implements a simplified [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern.
 
-Each action will have positional arguments and optional arguments. 
+There are three data models, `Set`, `Movement`, and `Workout` which are persisted using a file storage backend.
 
-```create``` has a positional argument of name. ```retrieve``` has a positional argument of id. ```delete``` has a positional argument of id ```list``` has no positional arguments.
+Controller functions are defined which hide the complexity of the model code from the view.
 
-```-h``` is the help command for argparse applications. Typing ```-h``` after any argument will show a list of all the ways you can use that particular argument. 
+The view is a CLI which accepts user input and displays data to the user.
 
-![image](media/screenshots/-h.png)
+## Getting started
 
-![image](media/screenshots/movement-h.png)
+### Running locally
 
-![image](media/screenshots/movement-create-h.png)
+* Clone the repo
+* Create and source a virtual environment in the project root: `python -m venv venv && source venv/bin/activate`
+* Install requirements: `pip install -r requirements.txt`
+* Run the application: `./run.py`
+* Enter `-h` at the prompt to see usage instructions
 
-![image](media/screenshots/movement-retrieve-h.png)
+### Example usage
 
-![image](media/screenshots/movement-delete-h.png)
+* List entities: `<resource> list`
+* Show an entity: `<resource> retrieve <id>`
+* Delete an entity: `<resource> delete <id>`
 
-![image](media/screenshots/movement-list-h.png)
+### Running the tests
 
-If you would like to create a movement, workout or set, you must include te object you would like to create and the positional arguments that accompany that object.
-If you wish to create a movement, type ```movement create squat```. 
-
-If you would like to retrieve a movement, workout or set, you must include the object you would like to retrieve and the positional arguments that accompany that object.
-For example, If you wish to retrieve a movement, type ```movement retrieve 6af38638```. This 8 character string is an example of an ID.
-
-If you would like to delete a movement, workout or set, you must include the object you would like to delete and the positional arguments that accompany that object.
-For example, If you wish to delete a movement, type ```movement delete 6af38638```. This 8 character string is an example of an ID.
-
-If you would like to list a movement, workout or set, you must include the object you would like to list. The list action has no positional arguments.
-For example, If you wish to list a movement, type ```movement list```.
-
-![image](media/screenshots/movement-all-actions.png)
-
-## Features
-
-### Existing Features
-
-### Future Features
-
-## Creating the Heroku app
-
-## Data Model
-
-## Testing
-
-### Bugs
-
-- __Solved Bugs__
-
-### Remaining Bugs
-
-### Validator Testing
+To run the unit tests: `python -m unittest .`
 
 ## Deployment
 
 This project was deployed using Code Institute's mock terminal for Heroku.
 
-- Steps for deployment:
-    - Fork or clone this repository
-    - Create a new Heroku app
-    - Set the buildpacks to ```Python``` and ```NodeJS``` in that order
-    - Link the Heroku app to the repository 
-    - Select the correct branch and click Deploy Branch under the Manual deploy section
-
+Steps for deployment:
+* Fork or clone this repository
+* Create a new Heroku app
+* Set the buildpacks to Python and NodeJS in that order
+* Link the Heroku app to the repository
+* Select the correct branch and click Deploy Branch under the Manual deploy section
 
 ## Credits
 
-- Code Institute for the deployment terminal
+* Code Institute for the terminal emulator
