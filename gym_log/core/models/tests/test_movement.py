@@ -1,14 +1,23 @@
 import unittest
+import uuid
+from mock import patch
 from freezegun import freeze_time
+
 
 from gym_log.core.models.movement import Movement
 
 
+def mock_uuid4():
+    mock_uuid = uuid.UUID('{12345678-1234-5678-1234-567812345678}')
+    return mock_uuid
+
+
+@patch('uuid.uuid4', mock_uuid4)
 class TestMovement(unittest.TestCase):
 
     def test_initialization_name_only(self):
         movement = Movement('Squat')
-        self.assertEqual(movement.id, 'abc')
+        self.assertEqual(movement.id, '12345678')
         self.assertEqual(movement.name, 'Squat')
         self.assertEqual(movement.weighted, True)
         self.assertEqual(movement.tags, [])
@@ -47,4 +56,4 @@ class TestMovement(unittest.TestCase):
 
     def test_generate_id(self):
         movement = Movement('Squat')
-        self.assertEqual(movement.id, 'abc')
+        self.assertEqual(movement.id, '12345678')

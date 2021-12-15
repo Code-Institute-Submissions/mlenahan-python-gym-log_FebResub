@@ -1,1 +1,13 @@
+astroid==2.9.0
+freezegun==1.1.0
+isort==5.10.1
+lazy-object-proxy==1.6.0
+mccabe==0.6.1
+platformdirs==2.4.0
+pylint==2.12.2
+python-dateutil==2.8.2
+six==1.16.0
 tabulate==0.8.9
+toml==0.10.2
+typing-extensions==4.0.1
+wrapt==1.13.3
