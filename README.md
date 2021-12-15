@@ -39,6 +39,8 @@ The view is a CLI which accepts user input and displays data to the user.
 * Show an entity: `<resource> retrieve <id>`
 * Delete an entity: `<resource> delete <id>`
 
+![Example usage](media/screenshots/movement-all-actions.png)
+
 ### Running the tests
 
 To run the unit tests: `python -m unittest .`
