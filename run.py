@@ -68,7 +68,7 @@ def movement_list(args):
     print(table)
     
 
-parser_movement_list = movement_subparsers.add_parser('list', help='List a movement')
+parser_movement_list = movement_subparsers.add_parser('list', help='List  movements')
 parser_movement_list.set_defaults(func=movement_list)
 
 # workout subparser
@@ -130,7 +130,7 @@ def workout_list(args):
     print(table)
     
 
-parser_workout_list = workout_subparsers.add_parser('list', help='List a workout')
+parser_workout_list = workout_subparsers.add_parser('list', help='List  workouts')
 parser_workout_list.set_defaults(func=workout_list)
 
 # set subparser
@@ -193,7 +193,7 @@ def set_list(args):
     print(table)
 
 
-parser_set_list = set_subparsers.add_parser('list', help='TODO')
+parser_set_list = set_subparsers.add_parser('list', help='List sets')
 parser_set_list.set_defaults(func=set_list)
 
 while True:
