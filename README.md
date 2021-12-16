@@ -1,4 +1,4 @@
-# CLI Workout tracker
+# CLI Workout Tracker
 
 ## Overview
 
@@ -13,7 +13,7 @@ The project was created as a learning exercise to understand how to create a sim
 * [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) app which allows users to create, read, update, and delete the related data models: Workout, Movement, and Set.
 * File storage backend - data is stored using a custom JSON file storage implementation.
 * Formatted data using [tabulate](https://pypi.org/project/tabulate/) library.
-* Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be comined in user commands, e.g. `movement delete abc-123`.
+* Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be combined in user commands, e.g. `movement delete abc-123`.
 
 ### Design
 
