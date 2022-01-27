@@ -7,7 +7,7 @@ class FileStorage:
     path = 'gym_log/core/data/'
 
     def save(self, entity):
-        
+
         entity_path = self.get_entity_path(entity)
 
         try:
@@ -16,7 +16,7 @@ class FileStorage:
                     file_dict = json.load(json_file)
                 except json.decoder.JSONDecodeError:
                     file_dict = {}
-                    
+
         except FileNotFoundError:
             file_dict = {}
         entity_dict = {}
@@ -24,9 +24,10 @@ class FileStorage:
             value = getattr(entity, field)
             entity_dict[field] = value
         file_dict[entity.id] = entity_dict
-        
+
         with open(entity_path, 'w+') as json_file:
-            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
+            json.dump(file_dict, json_file, indent=4,
+                      sort_keys=True, default=str)
 
     def retrieve(self, type, id):
         type_string = type.__name__.lower()
@@ -36,14 +37,15 @@ class FileStorage:
         if not entity_data:
             return None
         return type.from_dict(entity_data)
-        
+
     def delete(self, entity):
         entity_path = self.get_entity_path(entity)
         with open(entity_path) as json_file:
             file_dict = json.load(json_file)
         del file_dict[entity.id]
         with open(entity_path, 'w') as json_file:
-            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
+            json.dump(file_dict, json_file, indent=4,
+                      sort_keys=True, default=str)
 
     def list(self, type):
         type_string = type.__name__.lower()
@@ -76,10 +78,11 @@ class FileStorage:
             entity_dict[field] = value
         return entity_dict
 
-    def add_entry_to_file_dict(self, file_dict, entry):
+    def add_entity_to_file_dict(self, file_dict, entity, entity_dict):
         file_dict[entity.id] = entity_dict
         return file_dict
 
     def write_file_dict(self, file_dict, entity_path):
         with open(entity_path, 'w') as json_file:
-            json.dump(file_dict, json_file, indent=4, sort_keys=True, default=str)
+            json.dump(file_dict, json_file, indent=4,
+                      sort_keys=True, default=str)

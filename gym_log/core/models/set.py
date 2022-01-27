@@ -1,5 +1,6 @@
 import uuid
 
+
 class Set:
 
     RPE = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -12,9 +13,22 @@ class Set:
 
     @classmethod
     def from_dict(cls, data):
-        return cls(data['movement_id'], data['workout_id'], data['rep_count'], data['rpe'], data['notes'], data['id'])
+        return cls(
+            data['movement_id'],
+            data['workout_id'],
+            data['rep_count'],
+            data['rpe'],
+            data['notes'],
+            data['id'])
 
-    def __init__(self, movement_id, workout_id, rep_count, rpe=None, notes='', id=None):
+    def __init__(
+            self,
+            movement_id,
+            workout_id,
+            rep_count,
+            rpe=None,
+            notes='',
+            id=None):
         if rpe is not None and rpe not in self.RPE:
             raise ValueError("%s is not a valid rpe." % rpe)
         self.id = id if id else self.generate_id()

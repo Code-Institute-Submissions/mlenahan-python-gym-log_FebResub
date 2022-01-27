@@ -4,6 +4,7 @@ from mock import patch
 
 from gym_log.core.models.set import Set
 
+
 def mock_uuid4():
     mock_uuid = uuid.UUID('{12345678-1234-5678-1234-567812345678}')
     return mock_uuid

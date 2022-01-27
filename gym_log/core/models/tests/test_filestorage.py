@@ -31,7 +31,7 @@ class TestFileStorage(unittest.TestCase):
         file_storage = FileStorage()
         path = file_storage.get_entity_path(workout)
         self.assertTrue(path.endswith('gym_log/storage/data/workout.json'))
-    
+
     def test_get_entity_path_for_set(self):
         set = Set('12345678', '12345678', 12)
         file_storage = FileStorage()

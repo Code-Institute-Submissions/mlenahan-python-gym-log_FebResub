@@ -1,5 +1,4 @@
 import argparse
-from argparse import ArgumentError
 from gym_log.controllers import movement, workout, set
 from tabulate import tabulate
 
@@ -14,10 +13,17 @@ movement_subparsers = parser_movement.add_subparsers()
 
 # movement create subparser
 def movement_create(args):
-    movement.create(args.name, description=args.description, notes=args.notes, difficulty=args.difficulty, weighted=args.weighted, tags=args.tags)
+    movement.create(
+        args.name,
+        description=args.description,
+        notes=args.notes,
+        difficulty=args.difficulty,
+        weighted=args.weighted,
+        tags=args.tags)
 
 
-parser_movement_create = movement_subparsers.add_parser('create', help='Create a movement')
+parser_movement_create = movement_subparsers.add_parser(
+    'create', help='Create a movement')
 parser_movement_create.set_defaults(func=movement_create)
 parser_movement_create.add_argument('name', type=str)
 parser_movement_create.add_argument('--description', type=str, default='')
@@ -32,7 +38,8 @@ def movement_delete(args):
     movement.delete(args.id)
 
 
-parser_movement_delete = movement_subparsers.add_parser('delete', help='Delete a movement')
+parser_movement_delete = movement_subparsers.add_parser(
+    'delete', help='Delete a movement')
 parser_movement_delete.set_defaults(func=movement_delete)
 parser_movement_delete.add_argument('id', type=str)
 
@@ -40,20 +47,42 @@ parser_movement_delete.add_argument('id', type=str)
 # movement retrieve subparser
 def movement_retrieve(args):
     entity = movement.retrieve(args.id)
-    headers = ['Name', 'ID', 'Description', 'Difficulty', 'Notes', 'Tags', 'Weighted']
-    row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
+    headers = [
+        'Name',
+        'ID',
+        'Description',
+        'Difficulty',
+        'Notes',
+        'Tags',
+        'Weighted']
+    row = [
+        entity.name,
+        entity.id,
+        entity.description,
+        entity.difficulty,
+        entity.notes,
+        entity.tags,
+        entity.weighted]
     table = tabulate([row], headers=headers)
     print(table)
 
 
-parser_movement_retrieve = movement_subparsers.add_parser('retrieve', help='Retrieve a movement')
+parser_movement_retrieve = movement_subparsers.add_parser(
+    'retrieve', help='Retrieve a movement')
 parser_movement_retrieve.set_defaults(func=movement_retrieve)
 parser_movement_retrieve.add_argument('id', type=str)
 
 
 # movement list subparser
 def movement_list(args):
-    headers = ['Name', 'ID', 'Description', 'Difficulty', 'Notes', 'Tags', 'Weighted']
+    headers = [
+        'Name',
+        'ID',
+        'Description',
+        'Difficulty',
+        'Notes',
+        'Tags',
+        'Weighted']
     try:
         entities = movement.list()
     except FileNotFoundError:
@@ -62,13 +91,21 @@ def movement_list(args):
         return
     rows = []
     for entity in entities:
-        row = [entity.name, entity.id, entity.description, entity.difficulty, entity.notes, entity.tags, entity.weighted]
+        row = [
+            entity.name,
+            entity.id,
+            entity.description,
+            entity.difficulty,
+            entity.notes,
+            entity.tags,
+            entity.weighted]
         rows.append(row)
     table = tabulate(rows, headers=headers)
     print(table)
-    
 
-parser_movement_list = movement_subparsers.add_parser('list', help='List  movements')
+
+parser_movement_list = movement_subparsers.add_parser(
+    'list', help='List  movements')
 parser_movement_list.set_defaults(func=movement_list)
 
 # workout subparser
@@ -78,10 +115,15 @@ workout_subparsers = parser_workout.add_subparsers()
 
 # workout create subparser
 def workout_create(args):
-    workout.create(args.name, description=args.description, notes=args.notes, tags=args.tags)
+    workout.create(
+        args.name,
+        description=args.description,
+        notes=args.notes,
+        tags=args.tags)
 
 
-parser_workout_create = workout_subparsers.add_parser('create', help='Create a workout')
+parser_workout_create = workout_subparsers.add_parser(
+    'create', help='Create a workout')
 parser_workout_create.set_defaults(func=workout_create)
 parser_workout_create.add_argument('name', type=str)
 parser_workout_create.add_argument('--description', type=str, default='')
@@ -94,7 +136,8 @@ def workout_delete(args):
     workout.delete(args.id)
 
 
-parser_workout_delete = workout_subparsers.add_parser('delete', help='Delete a workout')
+parser_workout_delete = workout_subparsers.add_parser(
+    'delete', help='Delete a workout')
 parser_workout_delete.set_defaults(func=workout_delete)
 parser_workout_delete.add_argument('id', type=str)
 
@@ -103,12 +146,18 @@ parser_workout_delete.add_argument('id', type=str)
 def workout_retrieve(args):
     entity = workout.retrieve(args.id)
     headers = ['Name', 'ID', 'Description', 'Notes', 'Tags']
-    row = [entity.name, entity.id, entity.description, entity.notes, entity.tags]
+    row = [
+        entity.name,
+        entity.id,
+        entity.description,
+        entity.notes,
+        entity.tags]
     table = tabulate([row], headers=headers)
     print(table)
 
 
-parser_workout_retrieve = workout_subparsers.add_parser('retrieve', help='Retrieve a workout')
+parser_workout_retrieve = workout_subparsers.add_parser(
+    'retrieve', help='Retrieve a workout')
 parser_workout_retrieve.set_defaults(func=workout_retrieve)
 parser_workout_retrieve.add_argument('id', type=str)
 
@@ -124,13 +173,19 @@ def workout_list(args):
         return
     rows = []
     for entity in entities:
-        row = [entity.name, entity.id, entity.description, entity.notes, entity.tags]
+        row = [
+            entity.name,
+            entity.id,
+            entity.description,
+            entity.notes,
+            entity.tags]
         rows.append(row)
     table = tabulate(rows, headers=headers)
     print(table)
-    
 
-parser_workout_list = workout_subparsers.add_parser('list', help='List  workouts')
+
+parser_workout_list = workout_subparsers.add_parser(
+    'list', help='List  workouts')
 parser_workout_list.set_defaults(func=workout_list)
 
 # set subparser
@@ -140,7 +195,12 @@ set_subparsers = parser_set.add_subparsers()
 
 # set create subparser
 def set_create(args):
-    set.create(args.movement_id, args.workout_id, args.rep_count, rpe=args.rpe, notes=args.notes)
+    set.create(
+        args.movement_id,
+        args.workout_id,
+        args.rep_count,
+        rpe=args.rpe,
+        notes=args.notes)
 
 
 parser_set_create = set_subparsers.add_parser('create', help='Create a set')
@@ -166,12 +226,19 @@ parser_set_delete.add_argument('id', type=str)
 def set_retrieve(args):
     entity = set.retrieve(args.id)
     headers = ['Movement', 'Workout', 'ID', 'Rep Count', 'RPE', 'Notes']
-    row = [entity.movement_id, entity.workout_id, entity.id, entity.rep_count, entity.rpe, entity.notes]
+    row = [
+        entity.movement_id,
+        entity.workout_id,
+        entity.id,
+        entity.rep_count,
+        entity.rpe,
+        entity.notes]
     table = tabulate([row], headers=headers)
     print(table)
 
 
-parser_set_retrieve = set_subparsers.add_parser('retrieve', help='Retrieve a set')
+parser_set_retrieve = set_subparsers.add_parser(
+    'retrieve', help='Retrieve a set')
 parser_set_retrieve.set_defaults(func=set_retrieve)
 parser_set_retrieve.add_argument('id', type=str)
 
@@ -187,7 +254,13 @@ def set_list(args):
         return
     rows = []
     for entity in entities:
-        row = [entity.movement_id, entity.workout_id, entity.id, entity.rep_count, entity.rpe, entity.notes]
+        row = [
+            entity.movement_id,
+            entity.workout_id,
+            entity.id,
+            entity.rep_count,
+            entity.rpe,
+            entity.notes]
         rows.append(row)
     table = tabulate(rows, headers=headers)
     print(table)

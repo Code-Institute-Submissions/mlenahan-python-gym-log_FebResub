@@ -1,14 +1,14 @@
 import unittest
 import uuid
-from datetime import datetime, time
 from mock import patch
-from freezegun import freeze_time
 
 from gym_log.core.models.workout import Workout
+
 
 def mock_uuid4():
     mock_uuid = uuid.UUID('{12345678-1234-5678-1234-567812345678}')
     return mock_uuid
+
 
 @patch('uuid.uuid4', mock_uuid4)
 class TestWorkout(unittest.TestCase):
@@ -23,14 +23,16 @@ class TestWorkout(unittest.TestCase):
         self.assertEqual(workout.notes, '')
         self.assertEqual(workout.description, '')
 
-
     def test_initialization_override_tags(self):
         workout = Workout('Push Day 1', tags=['Bench Press', 'Military Press'])
         self.assertEqual(workout.tags, ['Bench Press', 'Military Press'])
 
     def test_initialization_override_description(self):
-        workout = Workout('Push Day 1', description='wokout focusing on chest, shoulders and triceps')
-        self.assertEqual(workout.description, 'wokout focusing on chest, shoulders and triceps')
+        workout = Workout(
+            'Push Day 1',
+            description='wokout focusing on chest, shoulders and triceps')
+        self.assertEqual(workout.description,
+                         'wokout focusing on chest, shoulders and triceps')
 
     def test_initialization_override_notes(self):
         workout = Workout('Push Day 1', notes='day 1 is chest focused')

@@ -42,8 +42,10 @@ class TestMovement(unittest.TestCase):
         self.assertEqual(movement.tags, ['quads', 'hamstrings'])
 
     def test_initialization_override_description(self):
-        movement = Movement('Squat', description='compound barbell exercise for legs')
-        self.assertEqual(movement.description, 'compound barbell exercise for legs')
+        movement = Movement(
+            'Squat', description='compound barbell exercise for legs')
+        self.assertEqual(movement.description,
+                         'compound barbell exercise for legs')
 
     def test_initialization_override_notes(self):
         movement = Movement('Squat', notes='good form is essential')
