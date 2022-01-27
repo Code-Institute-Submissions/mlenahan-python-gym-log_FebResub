@@ -21,7 +21,6 @@ def movement_delete(args):
 
 # movement retrieve subparser
 def movement_retrieve(args):
-    entity = movement.retrieve(args.id)
     headers = [
         'Name',
         'ID',
@@ -30,6 +29,11 @@ def movement_retrieve(args):
         'Notes',
         'Tags',
         'Weighted']
+    try:
+        entity = movement.retrieve(args.id)
+    except ValueError as e:
+        print(e)
+        return
     row = [
         entity.name,
         entity.id,
@@ -90,8 +94,12 @@ def workout_delete(args):
 
 # workout retrieve subparser
 def workout_retrieve(args):
-    entity = workout.retrieve(args.id)
     headers = ['Name', 'ID', 'Description', 'Notes', 'Tags']
+    try:
+        entity = workout.retrieve(args.id)
+    except ValueError as e:
+        print(e)
+        return
     row = [
         entity.name,
         entity.id,
@@ -141,7 +149,11 @@ def set_delete(args):
 
 # set retrieve subparser
 def set_retrieve(args):
-    entity = set.retrieve(args.id)
+    try:
+        entity = set.retrieve(args.id)
+    except ValueError as e:
+        print(e)
+        return
     headers = ['Movement', 'Workout', 'ID', 'Rep Count', 'RPE', 'Notes']
     row = [
         entity.movement_id,
