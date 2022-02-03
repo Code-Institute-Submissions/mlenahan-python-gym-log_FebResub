@@ -1,4 +1,4 @@
-# Pyton Gym Log
+# Python Gym Log
 
 ## Overview
 
@@ -37,17 +37,55 @@ The view is a CLI which accepts user input and displays data to the user.
 * Run the application: `./run.py`
 * Enter `-h` at the prompt to see usage instructions
 
-### Example usage
+## Example usage
 
 * Initial help: If a user types `-h` or `--help`, they will be shown the positional arguments.
 
 ![Example usage](media/screenshots/initial_help.png)
 
-* Movement List: If a user wants to list all their recorded movements, they will use the command `movement list`
-* Show an entity: `<resource> retrieve <id>`
-* Delete an entity: `<resource> delete <id>`
+### Movement
 
-![Example usage](media/screenshots/movement-all-actions.png)
+* Movement List - If a user wants to list all their recorded movements, they must use the command `movement list`.
+
+![Example usage](media/screenshots/movement/movement_list.png)
+
+* Movement Retrieve - If a user wants to retrieve one particular recorded movement they must use the command `movement retrieve <id>`. The exact ID of the movement they wish to retrieve must be given in order for retrieve that movement e.g. `movement retrieve 3dc769a2`. By using the command `movement list` you can see all IDs for all recorded movements.
+
+![Example usage](media/screenshots/movement/movement_retrieve.png)
+
+* Movement Delete - If a user wants to delete one particular recorded movement they must use the command `movement delete <id>`. The exact ID of the movement they wish to delete must be given in order for delete that movement e.g. `movement delete 3dc769a2`. By using the command `movement list` you can see all IDs for all recorded movements.
+
+![Example usage](media/screenshots/movement/movement_delete.png)
+
+* Movement Create - If a user wants to create a movement they must use the command `movement create <name>` e.g. `movement create bench-press`. If the user is adding a movement with a name that is more than one word they must seperate the words with a `-`.
+
+![Example usage](media/screenshots/movement/movement_create.png)
+
+* Movement Create Optional Arguments - When a user is creating a movement they must use the positional argument of name but they also have the choice to use some other optional arguments which include description, notes, difficulty, weighted and tags. By typing `movement create -h` the user will be able to see all the optional arguments they can use.
+
+![Example usage](media/screenshots/movement/movement_create_help.png)
+
+### Workout
+
+* Workout List - If a user wants to list all their recorded workouts, they must use the command `workout list`.
+
+![Example usage](media/screenshots/workout/workout_list.png)
+
+* Workout Retrieve - If a user wants to retrieve one particular recorded workout they must use the command `workout retrieve <id>`. The exact ID of the workout they wish to retrieve must be given in order for retrieve that workout e.g. `workout retrieve 3dc769a2`. By using the command `workout list` you can see all IDs for all recorded movements.
+
+![Example usage](media/screenshots/workout/workout_retrieve.png)
+
+* Workout Delete - If a user wants to delete one particular recorded movement they must use the command `workout delete <id>`. The exact ID of the workout they wish to delete must be given in order for delete that workout e.g. `workout delete 3dc769a2`. By using the command `workout list` you can see all IDs for all recorded workout.
+
+![Example usage](media/screenshots/workout/workout_delete.png)
+
+* Workout Create - If a user wants to create a workout they must use the command `workout create <name>` e.g. `workout create bench-press`. If the user is adding a workout with a name that is more than one word they must seperate the words with a `-`.
+
+![Example usage](media/screenshots/workout/workout_create.png)
+
+* Workout Create Optional Arguments - When a user is creating a workout they must use the positional argument of name but they also have the choice to use some other optional arguments which include description, notes, and tags. By typing `workout create -h` the user will be able to see all the optional arguments they can use.
+
+![Example usage](media/screenshots/workout/workout_create_help.png)
 
 ## Testing
 
