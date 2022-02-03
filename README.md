@@ -1,12 +1,14 @@
-# CLI Workout Tracker
+# Pyton Gym Log
 
 ## Overview
 
-CLI workout tracker. Users can record, list, and delete gym workout information. A [live instance of the application](https://python-gym-log-ml.herokuapp.com/) is hosted using a mock on Heroku.
+Python Gym Log is a command line interface program that runs in the Code Institute mock terminal on Heroku.
+
+The purpose of this app is to allow users to track their progress in the gym over time. Users have the ability to record movements (exercises), sets, and workouts. Users can list (show all instances of that data model), retrieve (show one instance based on the ID given), create or delete whichever data model they are working with.
+
+A [live instance of the application](https://python-gym-log-ml.herokuapp.com/) is hosted using a mock on Heroku.
 
 The project was created as a learning exercise to understand how to create a simple file storage system and MVC design.
-
-[Here is the live version of my project.](https://python-gym-log-ml.herokuapp.com/)
 
 ### Features
 
@@ -15,7 +17,7 @@ The project was created as a learning exercise to understand how to create a sim
 * Formatted data using [tabulate](https://pypi.org/project/tabulate/) library.
 * Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be combined in user commands, e.g. `movement delete abc-123`.
 
-### Design
+### Data Model
 
 This application implements a simplified [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern.
 
@@ -37,7 +39,11 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ### Example usage
 
-* List entities: `<resource> list`
+* Initial help: If a user types `-h` or `--help`, they will be shown the positional arguments.
+
+![Example usage](media/screenshots/initial_help.png)
+
+* Movement List: If a user wants to list all their recorded movements, they will use the command `movement list`
 * Show an entity: `<resource> retrieve <id>`
 * Delete an entity: `<resource> delete <id>`
 
