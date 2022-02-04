@@ -87,6 +87,28 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ![Example usage](media/screenshots/workout/workout_create_help.png)
 
+### Set
+
+* Set List - If a user wants to list all their recorded sets, they must use the command `set list`.
+
+![Example usage](media/screenshots/set/set_list.png)
+
+* Set Retrieve - If a user wants to retrieve one particular recorded set they must use the command `set retrieve <id>`. The exact ID of the set they wish to retrieve must be given in order for retrieve that set e.g. `set retrieve 3dc769a2`. By using the command `set list` you can see all IDs for all recorded sets.
+
+![Example usage](media/screenshots/set/set_retrieve.png)
+
+* Set Delete - If a user wants to delete one particular recorded set they must use the command `set delete <id>`. The exact ID of the set they wish to delete must be given in order for delete that set e.g. `set delete 3dc769a2`. By using the command `set list` you can see all IDs for all recorded sets.
+
+![Example usage](media/screenshots/set/set_delete.png)
+
+* Set Create - If a user wants to create a set they must use the command `set create <movement_id> <workout_id> <rep_count>` e.g. `set create 3dc769a2 ceb2e242 12`. The user can use the commands `movement list` and `workout_list` to easily view the IDs they need to create a set.
+
+![Example usage](media/screenshots/set/set_create.png)
+
+* Set Create Optional Arguments - When a user is creating a set they must use the positional argument of movement_id, workout_id and rep_count but they also have the choice to use some other optional arguments which include notes, and RPE (rate of perceived exertion). By typing `set create -h` the user will be able to see all the optional arguments they can use.
+
+![Example usage](media/screenshots/set/set_create_help.png)
+
 ## Testing
 
 To run the unit tests: `python3 -m unittest`
