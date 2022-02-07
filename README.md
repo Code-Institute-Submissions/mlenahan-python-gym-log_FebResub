@@ -13,9 +13,15 @@ The project was created as a learning exercise to understand how to create a sim
 ### Features
 
 * [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) app which allows users to create, read, update, and delete the related data models: Workout, Movement, and Set.
+* Accepts user input
 * File storage backend - data is stored using a custom JSON file storage implementation.
-* Formatted data using [tabulate](https://pypi.org/project/tabulate/) library.
-* Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be combined in user commands, e.g. `movement delete abc-123`.
+* Data displayed in a formatted table using the [tabulate](https://pypi.org/project/tabulate/) library.
+
+### Future Features
+
+* Allow users to update existing instances.
+
+![Tabulate Feature](media/screenshots/tabulate_feature.png)
 
 ### Data Model
 
@@ -113,11 +119,48 @@ The view is a CLI which accepts user input and displays data to the user.
 
 To run the unit tests: `python3 -m unittest`
 
-I have also manually tested the project by doing the following:
-    
-- Passed the code through a PEP8 linter and confirmed there are no problems
-- Tested in my local terminal and the Code Institute Heroku terminal 
+## Validation
 
+I have also manually tested the project by doing the following:
+
+- Tested in my local terminal and the Code Institute Heroku terminal.
+- Passed the code through a PEP8 linter and confirmed there are no problems.
+
+### Movement Model
+
+![Movement Model](media/screenshots/pep8/pep8_model_movement.png)
+
+### Set Model
+
+![Set Model](media/screenshots/pep8/pep8_model_set.png)
+
+### Workout Model
+
+![Workout Model](media/screenshots/pep8/pep8_model_workout.png)
+
+### Movement Controller
+
+![Movement Controller](media/screenshots/pep8/pep8_controller_movement.png)
+
+### Set Controller
+
+![Set Controller](media/screenshots/pep8/pep8_controller_set.png)
+
+### Workout Controller
+
+![Workout Controller](media/screenshots/pep8/pep8_controller_workout.png)
+
+### File Storage
+
+![File Storage](media/screenshots/pep8/pep8_filestorage.png)
+
+### Run.py
+
+![Run.py](media/screenshots/pep8/pep8_run.png)
+
+## Bugs
+
+When using some of the optional arguments such as `description`, if there are too many characters used it will break the formatting of the table used to display the recorded information.
 
 ## Deployment
 
@@ -129,6 +172,12 @@ Steps for deployment:
 * Set the buildpacks to Python and NodeJS in that order
 * Link the Heroku app to the repository
 * Select the correct branch and click Deploy Branch under the Manual deploy section
+
+## Libraries Used
+
+* Formatted data using [tabulate](https://pypi.org/project/tabulate/) library.
+* Nested command parsers using [argparse](https://docs.python.org/3/library/argparse.html). This allows for resources and actions to be combined in user commands, e.g. `movement delete abc-123`.
+* [Autopep8](https://pypi.org/project/autopep8/) was used to automatically format each file to make sure it's pep8 complient.
 
 ## Credits
 
