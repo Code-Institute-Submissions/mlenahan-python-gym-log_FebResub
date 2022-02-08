@@ -121,10 +121,7 @@ To run the unit tests: `python3 -m unittest`
 
 ## Validation
 
-I have also manually tested the project by doing the following:
-
-- Tested in my local terminal and the Code Institute Heroku terminal.
-- Passed the code through a PEP8 linter and confirmed there are no problems.
+Tested in local terminal and Heroku terminal emulator.
 
 ### Movement Model
 
@@ -160,11 +157,11 @@ I have also manually tested the project by doing the following:
 
 ## Bugs
 
-When using some of the optional arguments such as `description`, if there are too many characters used it will break the formatting of the table used to display the recorded information.
+All known bugs can be found [here](https://github.com/mlenahan/python-gym-log/labels/bug)
 
 ## Deployment
 
-This project was deployed using Code Institute's mock terminal for Heroku.
+This project was deployed using terminal emulator on Heroku.
 
 Steps for deployment:
 * Fork or clone this repository
