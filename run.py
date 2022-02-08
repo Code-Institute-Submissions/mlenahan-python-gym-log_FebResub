@@ -1,6 +1,6 @@
 import argparse
-from gym_log.controllers import movement, workout, set
 from tabulate import tabulate
+from gym_log.controllers import movement, workout, set
 
 
 # movement create subparser
