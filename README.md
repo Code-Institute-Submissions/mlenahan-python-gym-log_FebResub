@@ -2,32 +2,32 @@
 
 ## Overview
 
-Python Gym Log is a command line interface program that runs in the Code Institute mock terminal on Heroku.
+Python Gym Log is a command line interface program that runs in a terminal emulator on Heroku.
 
-The purpose of this app is to allow users to track their progress in the gym over time. Users have the ability to record movements (exercises), sets, and workouts. Users can list (show all instances of that data model), retrieve (show one instance based on the ID given), create or delete whichever data model they are working with.
+The app allows users to track their progress in the gym over time. Users have the ability to record movements (exercises), sets, and workouts. Users can list (show all instances of that data model), retrieve (show one instance based on the given ID), create or delete a data model instance.
 
-A [live instance of the application](https://python-gym-log-ml.herokuapp.com/) is hosted using a mock on Heroku.
+[Live instance](https://python-gym-log-ml.herokuapp.com/)
 
-The project was created as a learning exercise to understand how to create a simple file storage system and MVC design.
+The project was created as a learning exercise to understand how to create a primitave file storage backend and MVC architecture.
 
 ### Features
 
-* [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) app which allows users to create, read, update, and delete the related data models: Workout, Movement, and Set.
-* Accepts user input
-* File storage backend - data is stored using a custom JSON file storage implementation.
-* Data displayed in a formatted table using the [tabulate](https://pypi.org/project/tabulate/) library.
+* [CRUD app.](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) Users can create, read, update, and delete data entities.
+* Interactive command-line interface
+* Custom JSON file storage backend.
+* Tabulated data display via [tabulate](https://pypi.org/project/tabulate/).
 
 ### Future Features
 
-* Allow users to update existing instances.
+* Future features can be found [here](https://github.com/mlenahan/python-gym-log/labels/enhancement).
 
 ![Tabulate Feature](media/screenshots/tabulate_feature.png)
 
-### Data Model
+### Architecture
 
-This application implements a simplified [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern.
+This application implements an [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern.
 
-There are three data models, `Set`, `Movement`, and `Workout` which are persisted using a file storage backend.
+There are three data models, `Set`, `Movement`, and `Workout` which are persisted using a JSON file storage backend..
 
 Controller functions are defined which hide the complexity of the model code from the view.
 
@@ -45,7 +45,7 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ## Example usage
 
-* Initial help: If a user types `-h` or `--help`, they will be shown the positional arguments.
+* Initial help: If a user types `-h` or `--help`, they will be shown usage instructions.
 
 ![Example usage](media/screenshots/initial_help.png)
 
