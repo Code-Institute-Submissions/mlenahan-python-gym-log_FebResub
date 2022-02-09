@@ -1,10 +1,12 @@
 import argparse
+import re
 from tabulate import tabulate
 from gym_log.controllers import movement, workout, set
 
 
 # movement create subparser
 def movement_create(args):
+    print(args)
     movement.create(
         args.name,
         description=args.description,
@@ -47,7 +49,7 @@ def movement_retrieve(args):
 
 
 # movement list subparser
-def movement_list(args):
+def movement_list(_):
     headers = [
         'Name',
         'ID',
@@ -111,7 +113,7 @@ def workout_retrieve(args):
 
 
 # workout list subparser
-def workout_list(args):
+def workout_list(_):
     headers = ['Name', 'ID', 'Description', 'Notes', 'Tags']
     try:
         entities = workout.list()
@@ -167,7 +169,7 @@ def set_retrieve(args):
 
 
 # set list subparser
-def set_list(args):
+def set_list(_):
     headers = ['Movement', 'Workout', 'ID', 'Rep Count', 'RPE', 'Notes']
     try:
         entities = set.list()
@@ -187,6 +189,18 @@ def set_list(args):
         rows.append(row)
     table = tabulate(rows, headers=headers)
     print(table)
+
+
+def parse_user_input(user_input):
+    """
+    Converts user input string into list of arguments, preserving quoted terms.
+    """
+    # See - https://stackoverflow.com/questions/79968/split-a-string-by-spaces-
+    # preserving-quoted-substrings-in-python
+
+    args = [p for p in re.split("( |\\\".*?\\\"|'.*?')", user_input)
+            if p.strip()]
+    return [p.replace('"', '') for p in args]
 
 
 def main():
@@ -287,7 +301,8 @@ def main():
             if not user_input:
                 continue
             try:
-                args = parser.parse_args(user_input.split())
+                parsed_user_input = parse_user_input(user_input)
+                args = parser.parse_args(parsed_user_input)
                 args.func(args)
             except SystemExit:
                 continue
