@@ -63,7 +63,7 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ![Example usage](media/screenshots/movement/movement_delete.png)
 
-* Movement Create - If a user wants to create a movement they must use the command `movement create <name>` e.g. `movement create bench-press`. If the user is adding a movement with a name that is more than one word they must seperate the words with a `-`.
+* Movement Create - If a user wants to create a movement they must use the command `movement create <name>` e.g. `movement create "bench press"`.
 
 ![Example usage](media/screenshots/movement/movement_create.png)
 
@@ -85,7 +85,7 @@ The view is a CLI which accepts user input and displays data to the user.
 
 ![Example usage](media/screenshots/workout/workout_delete.png)
 
-* Workout Create - If a user wants to create a workout they must use the command `workout create <name>` e.g. `workout create bench-press`. If the user is adding a workout with a name that is more than one word they must seperate the words with a `-`.
+* Workout Create - If a user wants to create a workout they must use the command `workout create <name>` e.g. `workout create "push day 1"`.
 
 ![Example usage](media/screenshots/workout/workout_create.png)
 
@@ -114,6 +114,12 @@ The view is a CLI which accepts user input and displays data to the user.
 * Set Create Optional Arguments - When a user is creating a set they must use the positional argument of movement_id, workout_id and rep_count but they also have the choice to use some other optional arguments which include notes, and RPE (rate of perceived exertion). By typing `set create -h` the user will be able to see all the optional arguments they can use.
 
 ![Example usage](media/screenshots/set/set_create_help.png)
+
+### Optional arguments
+
+* Users have the choice of adding optional arguments when creating instances. To use an optional argument, the user must type `--<argument>` e.g. `movement create "bench press" --description "compound movement for chest"`
+
+![Example usage](media/screenshots/optional_arguments.png)
 
 ## Testing
 
