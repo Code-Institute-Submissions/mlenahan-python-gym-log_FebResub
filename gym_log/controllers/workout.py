@@ -1,5 +1,5 @@
-from ..core.models.workout import Workout
 from gym_log.storage.file_storage import FileStorage
+from ..core.models.workout import Workout
 
 file_storage = FileStorage()
 

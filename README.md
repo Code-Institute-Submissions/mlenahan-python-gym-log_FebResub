@@ -16,12 +16,13 @@ The project was created as a learning exercise to understand how to create a pri
 * Interactive command-line interface
 * Custom JSON file storage backend.
 * Tabulated data display via [tabulate](https://pypi.org/project/tabulate/).
+* ![Tabulate Feature](media/screenshots/tabulate_feature.png)
 
 ### Future Features
 
 * Future features can be found [here](https://github.com/mlenahan/python-gym-log/labels/enhancement).
 
-![Tabulate Feature](media/screenshots/tabulate_feature.png)
+
 
 ### Architecture
 
