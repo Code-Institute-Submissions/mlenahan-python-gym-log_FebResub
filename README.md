@@ -4,7 +4,7 @@
 
 Python Gym Log is a command line interface program that runs in a terminal emulator on Heroku.
 
-The app allows users to track their progress in the gym over time. Users have the ability to record movements (exercises), sets, and workouts. Users can list (show all instances of that data model), retrieve (show one instance based on the given ID), create or delete a data model instance.
+The app allows users to track their progress in the gym over time. A good fitness regime is essential to a healthy lifestyle. Having a place to track progress and reference in the future will ensure the user can improve their strength and fitness levels over time. Users have the ability to record movements (exercises), sets, and workouts. Users can list (show all instances of that data model), retrieve (show one instance based on the given ID), create or delete a data model instance.
 
 [Live instance](https://python-gym-log-ml.herokuapp.com/)
 
@@ -13,7 +13,7 @@ The project was created as a learning exercise to understand how to create a pri
 ### Features
 
 * [CRUD app.](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) Users can create, read, update, and delete data entities.
-* Interactive command-line interface
+* Interactive command-line interface designed using [argparse](https://docs.python.org/3/library/argparse.html).
 * Custom JSON file storage backend.
 * Tabulated data display via [tabulate](https://pypi.org/project/tabulate/).
 * ![Tabulate Feature](media/screenshots/tabulate_feature.png)
